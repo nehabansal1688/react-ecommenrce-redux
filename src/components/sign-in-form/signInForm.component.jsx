@@ -10,7 +10,6 @@ import {
 } from '../../utils/firebase/firebase.utils';
 
 import './signInForm.style.scss';
-//import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
   email: '',
@@ -20,8 +19,6 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  //const { setCurrentUser } = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };

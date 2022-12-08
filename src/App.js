@@ -19,6 +19,7 @@ const App = () => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
+      debugger;
       dispatch(setCurrentUser(user));
     });
 

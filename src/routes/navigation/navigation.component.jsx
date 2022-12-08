@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-
+import { useSelector } from 'react-redux';
 import { Fragment } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
-import { UserContext } from '../../contexts/user.context';
+
 // import './navigation.styles.scss';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CardIcon from '../../components/card-icon/card-icon.component';
@@ -15,13 +15,14 @@ import {
   NavLink,
   NavLinkContainer,
 } from './navigation.styles';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 const Navigation = () => {
   //whenever we use context it makes the component rerun the complete code. doesnt mattter if the code has actualy changed or not. code will re run. re render depends upon change in any parameter.
 
   //if 100 component are using UserContext that mean code for those 100 components will run on any single component change  which can be a performance bottle neck
-  const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
   const signOutHandler = async () => {
     await signOutUser();
   };
